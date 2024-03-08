@@ -11,6 +11,7 @@
 | /tasks       | DELETE      | Y    | id                |
 
 tasks: ```json
+        
         tasks: {
             "Date": "ect..",
             "text": "ect..",
@@ -18,5 +19,6 @@ tasks: ```json
             "createdAt": "ect..",
             "updatesAt": "ect.."
         }
+        
        ```
 

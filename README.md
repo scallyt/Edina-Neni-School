@@ -10,7 +10,7 @@
 | /tasks       | PATCH       | Y    | task product      |
 | /tasks       | DELETE      | Y    | id                |
 
-tasks: ```json
+tasks: ``` json
         
         tasks: {
             "Date": "ect..",
@@ -19,6 +19,6 @@ tasks: ```json
             "createdAt": "ect..",
             "updatesAt": "ect.."
         }
-        
+
        ```
 

@@ -10,6 +10,14 @@ import (
 	"github.com/scallyt/Edina-Neni-School/models"
 )
 
+var user internal.User
+
+var ResponseUser = models.responsUser{
+	int(user.ID),
+	user.Email,
+	user.Token,
+}
+
 func UserLogin(c *gin.Context) {
 	var data models.LoginData
 	var err error
@@ -28,12 +36,12 @@ func UserLogin(c *gin.Context) {
 	}
 
 	// Login successful
-	c.JSON(http.StatusOK, gin.H{"user": models.ResponseUser})
+	c.JSON(http.StatusOK, gin.H{"user": ResponseUser})
 }
 
 func UserLists(c *gin.Context) {
 	var users []internal.User
 	db.Find(&users)
 
-	c.JSON(http.StatusOK, gin.H{"users": users})
+	c.JSON(http.StatusOK, gin.H{"users": ResponseUser})
 }

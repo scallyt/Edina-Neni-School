@@ -6,7 +6,6 @@ import (
 )
 
 var db *gorm.DB
-var user internal.User
 
 func init() {
 	db = internal.ConnectDatabase()

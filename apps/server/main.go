@@ -2,10 +2,10 @@ package main
 
 import (
 	"log"
-	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"github.com/scallyt/Edina-Neni-School/middlewares"
 	"github.com/scallyt/Edina-Neni-School/services"
 )
 
@@ -17,13 +17,16 @@ func main() {
 
 	router := gin.Default()
 
+	router.Use(middlewares.TokenAuthMiddleware())
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 
 	//	ROUTES
 	router.GET("/tasks", services.TaskList)
+	router.GET("/")
 
 	router.POST("/user/login", services.UserLogin)
+	router.GET("/users", services.UserLists)
 
-	router.Run(os.Getenv("PORT"))
+	router.Run(":4040")
 }

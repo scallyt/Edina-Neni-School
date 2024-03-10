@@ -12,12 +12,6 @@ import (
 
 var user internal.User
 
-var ResponseUser = models.responsUser{
-	int(user.ID),
-	user.Email,
-	user.Token,
-}
-
 func UserLogin(c *gin.Context) {
 	var data models.LoginData
 	var err error
@@ -35,13 +29,28 @@ func UserLogin(c *gin.Context) {
 		return
 	}
 
+	responseUser := models.ResponseUser{
+		ID:    int(user.ID),
+		Email: user.Email,
+		Token: user.Token,
+	}
+
 	// Login successful
-	c.JSON(http.StatusOK, gin.H{"user": ResponseUser})
+	c.JSON(http.StatusOK, gin.H{"user": responseUser})
 }
 
 func UserLists(c *gin.Context) {
 	var users []internal.User
 	db.Find(&users)
 
-	c.JSON(http.StatusOK, gin.H{"users": ResponseUser})
+	responseUser := make([]models.ResponseUser, len(users))
+	for i, u := range users {
+		responseUser[i] = models.ResponseUser{
+			ID:    int(u.ID),
+			Email: u.Email,
+			Token: u.Token,
+		}
+	}
+
+	c.JSON(http.StatusOK, gin.H{"users": responseUser})
 }

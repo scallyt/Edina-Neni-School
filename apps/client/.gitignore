@@ -1,6 +1,11 @@
 # build output
 dist/
-
+*node_modules
+.vscode
+.yarn
+.vscode
+vscode
+yarn
 # generated types
 .astro/
 

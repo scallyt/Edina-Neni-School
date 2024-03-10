@@ -23,7 +23,9 @@ func main() {
 
 	//	ROUTES
 	router.GET("/tasks", services.TaskList)
-	router.GET("/")
+	router.POST("/tasks", services.TaskCreate)
+	router.PATCH("/tasks/:id", services.TaskUpdate)
+	router.DELETE("/tasks/:id", services.TaskDelete)
 
 	router.POST("/user/login", services.UserLogin)
 	router.GET("/users", services.UserLists)

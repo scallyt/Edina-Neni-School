@@ -1,0 +1,22 @@
+meta {
+  name: Create Task
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:4040/tasks
+  body: json
+  auth: none
+}
+
+headers {
+  Token: bz1Ye6z5tXwFu9ZUe8kqjW3p
+}
+
+body:json {
+  {
+    "date": "2024.03.10",
+    "text": "asadsad
+  }
+}

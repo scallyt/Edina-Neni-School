@@ -22,12 +22,12 @@ type User struct {
 }
 
 type Tasks struct {
-	ID   uint   `gorm:"primaryKey"`
-	Date string `gorm:"unique;not null`
-	Text string `gorm:"unique;not null"`
+	ID   uint   `gorm:"primaryKey;not null;autoIncrement"`
+	Date string `gorm:"not null`
+	Text string `gorm:"not null"`
 
-	CreatedAt time.Time `gorm:"autoCreateTime;"`
-	UpdatedAt time.Time `gorm:"autoUpdateTime;"`
+	CreatedAt time.Time `gorm:"autoCreateTime"`
+	UpdatedAt time.Time `gorm:"autoUpdateTime"`
 }
 
 func ConnectDatabase() *gorm.DB {
